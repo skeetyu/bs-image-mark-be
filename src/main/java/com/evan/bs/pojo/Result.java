@@ -1,4 +1,4 @@
-package com.evan.bs.result;
+package com.evan.bs.pojo;
 
 public class Result {
     private int code;   // 响应码
