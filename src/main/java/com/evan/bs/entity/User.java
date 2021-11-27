@@ -1,4 +1,4 @@
-package com.evan.bs.pojo;
+package com.evan.bs.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;

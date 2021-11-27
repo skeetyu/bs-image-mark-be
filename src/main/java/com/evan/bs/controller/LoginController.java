@@ -1,11 +1,8 @@
 package com.evan.bs.controller;
 
-import com.evan.bs.pojo.User;
-import com.evan.bs.pojo.Password;
-
-// import javax.servlet.http.HttpSession;
-
-import com.evan.bs.pojo.Result;
+import com.evan.bs.entity.Password;
+import com.evan.bs.entity.User;
+import com.evan.bs.result.Result;
 import com.evan.bs.service.UserService;
 
 import org.apache.shiro.SecurityUtils;
@@ -115,7 +112,7 @@ public class LoginController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "/api/getuser")
+    @PostMapping(value = "/api/getuser")
     @ResponseBody
     public User getuser(){
         String username = SecurityUtils.getSubject().getPrincipal().toString();

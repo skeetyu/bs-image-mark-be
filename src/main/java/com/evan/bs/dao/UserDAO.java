@@ -1,6 +1,6 @@
 package com.evan.bs.dao;
 
-import com.evan.bs.pojo.User;
+import com.evan.bs.entity.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;

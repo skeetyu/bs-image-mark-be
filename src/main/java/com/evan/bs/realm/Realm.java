@@ -1,7 +1,7 @@
 package com.evan.bs.realm;
 
+import com.evan.bs.entity.User;
 import com.evan.bs.service.UserService;
-import com.evan.bs.pojo.User;
 
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

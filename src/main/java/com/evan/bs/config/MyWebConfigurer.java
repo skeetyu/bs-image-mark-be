@@ -22,7 +22,8 @@ public class MyWebConfigurer implements WebMvcConfigurer {
                 .excludePathPatterns("/api/logout")
                 .excludePathPatterns("/api/register")
                 .excludePathPatterns("/api/unsubscribe")
-                .excludePathPatterns("/api/editpassword");
+                .excludePathPatterns("/api/editpassword")
+                .excludePathPatterns("/api/upload");
     }
 
     @Override
@@ -31,6 +32,13 @@ public class MyWebConfigurer implements WebMvcConfigurer {
                 .allowCredentials(true)
                 .allowedOrigins("http://localhost:8081")
                 .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")
-                .allowedHeaders("*");
+                .allowedHeaders("*")
+                .maxAge(3600);
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry){
+        registry.addResourceHandler("/api/graphs/**")
+                .addResourceLocations("file:" + "D:/Coding/bs-image-mark-fe/src/assets/upload/");
     }
 }

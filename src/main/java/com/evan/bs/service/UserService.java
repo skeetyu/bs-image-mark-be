@@ -1,11 +1,10 @@
 package com.evan.bs.service;
 
 import com.evan.bs.dao.UserDAO;
-import com.evan.bs.pojo.User;
+import com.evan.bs.entity.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService {
@@ -31,7 +30,7 @@ public class UserService {
     public void add(User user){
         userDAO.save(user);
     }
-    
+
     public void deleteByName(String username){
         userDAO.deleteByUsername(username);
     }
