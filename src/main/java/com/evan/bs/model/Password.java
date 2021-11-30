@@ -1,4 +1,4 @@
-package com.evan.bs.entity;
+package com.evan.bs.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

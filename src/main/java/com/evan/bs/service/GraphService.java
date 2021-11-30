@@ -3,6 +3,7 @@ package com.evan.bs.service;
 import java.util.List;
 
 import com.evan.bs.dao.GraphDAO;
+import com.evan.bs.dao.TaskGraphDAO;
 import com.evan.bs.dao.UserGraphDAO;
 import com.evan.bs.entity.Graph;
 import com.evan.bs.entity.UserGraph;
@@ -16,6 +17,8 @@ public class GraphService {
     GraphDAO graphDAO;
     @Autowired
     UserGraphDAO userGraphDAO;
+    @Autowired
+    TaskGraphDAO taskGraphDAO;
  
     public boolean existByGraphname(String graphname){
         return graphDAO.existsByName(graphname);
@@ -29,7 +32,11 @@ public class GraphService {
         userGraphDAO.save(userGraph);
     }
 
-    public List<Graph> getGraphs(String username){
+    public List<Graph> getUserGraphs(String username){
         return graphDAO.getAllGraphsByUsername(username);
+    }
+
+    public List<Graph> getTaskGraphs(String taskname){
+        return graphDAO.getAllGraphsByTaskname(taskname);
     }
 }

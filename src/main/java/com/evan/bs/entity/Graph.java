@@ -14,7 +14,6 @@ public class Graph {
     
     String name;
     String path;
-    int marktime;
 
     public Graph(){
 
@@ -23,7 +22,6 @@ public class Graph {
     public Graph(String name, String path){
         this.name = name;
         this.path = path;
-        this.marktime = 0;
     }
 
     public int getGid(){
@@ -50,11 +48,4 @@ public class Graph {
         this.path = path;
     }
 
-    public int getMarktime(){
-        return marktime;
-    }
-
-    public void setMarktime(int marktime){
-        this.marktime = marktime;
-    }
 }

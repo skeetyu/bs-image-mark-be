@@ -2,6 +2,7 @@ package com.evan.bs.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 import com.evan.bs.entity.Graph;
 import com.evan.bs.entity.UserGraph;
@@ -60,6 +61,14 @@ public class GraphController {
     @ResponseBody
     public ResultGraph getgraphs(){
         String username = SecurityUtils.getSubject().getPrincipal().toString();
-        return new ResultGraph(200, graphService.getGraphs(username));
+        return new ResultGraph(200, graphService.getUserGraphs(username));
+    }
+
+    @CrossOrigin
+    @PostMapping(value = "/api/gettaskgraphs")
+    @ResponseBody
+    public ResultGraph getTaskGraphs(@RequestBody Map<String, String> taskparam){
+        String taskname = taskparam.get("taskname");
+        return new ResultGraph(200, graphService.getTaskGraphs(taskname));
     }
 }

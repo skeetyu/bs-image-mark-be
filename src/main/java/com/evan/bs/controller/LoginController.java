@@ -1,7 +1,7 @@
 package com.evan.bs.controller;
 
-import com.evan.bs.entity.Password;
 import com.evan.bs.entity.User;
+import com.evan.bs.model.Password;
 import com.evan.bs.result.Result;
 import com.evan.bs.service.UserService;
 

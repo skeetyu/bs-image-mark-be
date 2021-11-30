@@ -13,4 +13,7 @@ public interface GraphDAO extends JpaRepository<Graph, Integer> {
 
     @Query(nativeQuery = true, value = "select * from graph where name in (select graphname from user_graph where username = ?1 )")
     List<Graph> getAllGraphsByUsername(String username);
+
+    @Query(nativeQuery = true, value = "select * from graph where name in (select graphname from task_graph where taskname = ?1 )")
+    List<Graph> getAllGraphsByTaskname(String taskname);
 }
