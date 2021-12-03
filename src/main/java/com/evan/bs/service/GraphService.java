@@ -39,4 +39,8 @@ public class GraphService {
     public List<Graph> getTaskGraphs(String taskname){
         return graphDAO.getAllGraphsByTaskname(taskname);
     }
+
+    public String getPath(String graphname){
+        return graphDAO.findByName(graphname).getPath();
+    }
 }

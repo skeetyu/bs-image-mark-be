@@ -107,8 +107,7 @@ public class LoginController {
     @GetMapping(value = "/api/authentication")
     @ResponseBody
     public Result authentication(){
-        System.out.println("authentication");
-        return new Result(1000);
+        return new Result(200);
     }
 
     @CrossOrigin

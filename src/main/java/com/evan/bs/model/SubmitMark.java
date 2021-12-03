@@ -1,25 +1,16 @@
-package com.evan.bs.entity;
+package com.evan.bs.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import javax.persistence.*;
-
-@Entity
-@Table(name = "mark")
-@JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
-public class Mark {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "mid")
-    int mid;
-    
+public class SubmitMark {
+    int state;
     String task;
     String graph;
     String tag;
     String notation;
     String description;
 
-    public Mark() { }
-    public Mark(String task, String graph, String tag, String notation, String description){
+    public SubmitMark() { }
+    public SubmitMark(int state, String task, String graph, String tag, String notation, String description){
+        this.state = state;
         this.task = task;
         this.graph = graph;
         this.tag = tag;
@@ -27,6 +18,14 @@ public class Mark {
         this.description = description;
     }
 
+    public int getState(){
+        return this.state;
+    }
+
+    public void setState(int state){
+        this.state = state;
+    }
+    
     public String getTask(){
         return this.task;
     }

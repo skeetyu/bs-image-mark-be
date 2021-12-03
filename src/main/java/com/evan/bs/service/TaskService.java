@@ -52,4 +52,16 @@ public class TaskService {
     public List<Task> getPublishedTasks(String username){
         return taskDAO.findAllByPublisher(username);
     }
+
+    public int getState(String taskname){
+        return taskDAO.findByName(taskname).getState();
+    }
+
+    public void updateState(String taskname, int state){
+        taskDAO.setState(state, taskname);
+    }
+
+    public int countGraphsOfTask(String taskname){
+        return taskGraphDAO.countGraphnamesByTaskname(taskname);
+    }
 }
