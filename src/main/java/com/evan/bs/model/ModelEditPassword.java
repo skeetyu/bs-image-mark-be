@@ -3,12 +3,12 @@ package com.evan.bs.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
-public class Password {
+public class ModelEditPassword {
     String oldpassword;
     String newpassword;
 
-    Password(){ }
-    Password(String oldpassword, String newpassword){
+    ModelEditPassword(){ }
+    ModelEditPassword(String oldpassword, String newpassword){
         this.oldpassword = oldpassword;
         this.newpassword = newpassword;
     }

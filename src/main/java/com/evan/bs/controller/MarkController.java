@@ -4,12 +4,14 @@ import java.util.Map;
 
 import com.evan.bs.entity.Mark;
 import com.evan.bs.entity.TaskGraph;
-import com.evan.bs.model.SubmitMark;
+import com.evan.bs.model.ModelExportMark;
+import com.evan.bs.model.ModelSubmitMark;
 import com.evan.bs.result.Result;
 import com.evan.bs.result.ResultMark;
 import com.evan.bs.service.GraphService;
 import com.evan.bs.service.MarkService;
 import com.evan.bs.service.TaskService;
+import com.evan.bs.util.AnnotationUtils;
 
 // import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +53,7 @@ public class MarkController {
     @CrossOrigin
     @PostMapping(value = "/api/submitmark")
     @ResponseBody
-    public Result submit(@RequestBody SubmitMark submitMark){
+    public Result submitMark(@RequestBody ModelSubmitMark submitMark){
         int state = submitMark.getState();
         String task = submitMark.getTask();
         if(state == 1){
@@ -70,7 +72,7 @@ public class MarkController {
     @CrossOrigin
     @PostMapping(value = "/api/submittask")
     @ResponseBody
-    public Result submit(@RequestBody Map<String, String> taskparam){
+    public Result submitTask(@RequestBody Map<String, String> taskparam){
         String task = taskparam.get("taskname");
         if(markService.countMarkedGraphsOfTask(task) != taskService.countGraphsOfTask(task)){
             return new Result(400);
@@ -78,5 +80,25 @@ public class MarkController {
             taskService.updateState(task, 3);
             return new Result(200);
         }
+    }
+
+    @CrossOrigin
+    @PostMapping(value = "/api/exportmark")
+    @ResponseBody
+    public Result exportMark(@RequestBody ModelExportMark requestmark){
+        String task = requestmark.getTask();
+        String graph = requestmark.getGraph();
+        Mark mark = markService.getMarks(task, graph);
+        boolean flag = false;
+
+        if(requestmark.getType().equals("PASCAL VOC(.xml)"))
+            flag = AnnotationUtils.writeXML(mark.getNotation(), requestmark);
+        else if(requestmark.getType().equals("COCO(.txt)"))
+            flag = AnnotationUtils.writeCOCO(mark.getNotation(), requestmark);
+        else
+            flag = false;
+
+        if(flag) return new Result(200);
+        else return new Result(400);
     }
 }

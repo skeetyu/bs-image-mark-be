@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<annotation>
+  <folder>pascal voc</folder>
+  <filename>3pnjhe.jpg</filename>
+  <path>D:/Coding/bs-image-mark-be/annotations/pascal voc/3pnjhe.jpg</path>
+  <source>
+    <database>Unknown</database>
+  </source>
+  <size>
+    <width>1672</width>
+    <height>1080</height>
+    <depth>3</depth>
+  </size>
+  <segmented>0</segmented>
+  <object>
+    <name>广场</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>67</xmin>
+      <ymin>277</ymin>
+      <xmax>141</xmax>
+      <ymax>340</ymax>
+    </bndbox>
+    <name>斑马线</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>747</xmin>
+      <ymin>513</ymin>
+      <xmax>779</xmax>
+      <ymax>553</ymax>
+    </bndbox>
+  </object>
+</annotation>

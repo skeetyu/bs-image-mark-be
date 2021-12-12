@@ -1,6 +1,6 @@
 package com.evan.bs.model;
 
-public class SubmitMark {
+public class ModelSubmitMark {
     int state;
     String task;
     String graph;
@@ -8,8 +8,12 @@ public class SubmitMark {
     String notation;
     String description;
 
-    public SubmitMark() { }
-    public SubmitMark(int state, String task, String graph, String tag, String notation, String description){
+    public ModelSubmitMark() { }
+    public ModelSubmitMark(String task, String graph){
+        this.task = task;
+        this.graph = graph;
+    }
+    public ModelSubmitMark(int state, String task, String graph, String tag, String notation, String description){
         this.state = state;
         this.task = task;
         this.graph = graph;

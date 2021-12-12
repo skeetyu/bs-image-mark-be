@@ -5,12 +5,12 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
-public class CreateTask {
+public class ModelCreateTask {
     List<String> graphs;
     String taskname;
 
-    public CreateTask() { }
-    public CreateTask(List<String> graphs, String taskname){
+    public ModelCreateTask() { }
+    public ModelCreateTask(List<String> graphs, String taskname){
         this.graphs = graphs;
         this.taskname = taskname;
     }

@@ -1,7 +1,7 @@
 package com.evan.bs.controller;
 
 import com.evan.bs.entity.User;
-import com.evan.bs.model.Password;
+import com.evan.bs.model.ModelEditPassword;
 import com.evan.bs.result.Result;
 import com.evan.bs.service.UserService;
 
@@ -84,7 +84,7 @@ public class LoginController {
     @CrossOrigin
     @PostMapping(value = "/api/editpassword")
     @ResponseBody
-    public Result editpassword(@RequestBody Password password){
+    public Result editPassword(@RequestBody ModelEditPassword password){
         String username = SecurityUtils.getSubject().getPrincipal().toString();
         User user = userService.getByName(username);
         String salt = user.getSalt();
@@ -113,7 +113,7 @@ public class LoginController {
     @CrossOrigin
     @PostMapping(value = "/api/getuser")
     @ResponseBody
-    public User getuser(){
+    public User getUser(){
         String username = SecurityUtils.getSubject().getPrincipal().toString();
         User user = userService.getByName(username);
         return user;

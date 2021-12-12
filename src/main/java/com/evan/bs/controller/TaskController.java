@@ -4,7 +4,7 @@ import java.util.Map;
 
 import com.evan.bs.entity.Task;
 import com.evan.bs.entity.TaskGraph;
-import com.evan.bs.model.CreateTask;
+import com.evan.bs.model.ModelCreateTask;
 import com.evan.bs.result.Result;
 import com.evan.bs.result.ResultTask;
 import com.evan.bs.service.TaskService;
@@ -22,7 +22,7 @@ public class TaskController {
     @CrossOrigin
     @PostMapping(value = "/api/createtask")
     @ResponseBody
-    public Result createTask(@RequestBody CreateTask createTask){
+    public Result createTask(@RequestBody ModelCreateTask createTask){
         String publisher = SecurityUtils.getSubject().getPrincipal().toString();
         String taskname = createTask.getTaskname();
 
