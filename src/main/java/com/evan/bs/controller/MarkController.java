@@ -1,6 +1,13 @@
 package com.evan.bs.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import com.evan.bs.entity.Mark;
 import com.evan.bs.entity.TaskGraph;
@@ -13,6 +20,8 @@ import com.evan.bs.service.MarkService;
 import com.evan.bs.service.TaskService;
 import com.evan.bs.util.AnnotationUtils;
 
+import org.apache.shiro.io.ResourceUtils;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 // import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -85,20 +94,41 @@ public class MarkController {
     @CrossOrigin
     @PostMapping(value = "/api/exportmark")
     @ResponseBody
-    public Result exportMark(@RequestBody ModelExportMark requestmark){
+    public void exportMark(@RequestBody ModelExportMark requestmark, HttpServletResponse response){
         String task = requestmark.getTask();
         String graph = requestmark.getGraph();
         Mark mark = markService.getMarks(task, graph);
         boolean flag = false;
 
-        if(requestmark.getType().equals("PASCAL VOC(.xml)"))
+        if(requestmark.getType().equals("PASCAL VOC(.xml)")){
             flag = AnnotationUtils.writeXML(mark.getNotation(), requestmark);
-        else if(requestmark.getType().equals("COCO(.txt)"))
+            if(flag){
+                File file = new File("D:/Coding/bs-image-mark-be/annotations/pascal voc/" + requestmark.getGraph() + ".xml");
+                try{
+                    InputStream is = new FileInputStream(file);
+                    OutputStream os = response.getOutputStream();
+                    response.setContentType("application/x-download");
+                    response.addHeader("Content-Disposition", "attachment;filename=demo.xml");
+                    IOUtils.copy(is, os);
+                    System.out.println("??");
+                }catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
+        }else if(requestmark.getType().equals("COCO(.txt)")){
             flag = AnnotationUtils.writeCOCO(mark.getNotation(), requestmark);
-        else
-            flag = false;
-
-        if(flag) return new Result(200);
-        else return new Result(400);
+            if(flag){
+                File file = new File("D:/Coding/bs-image-mark-be/annotations/coco/" + requestmark.getGraph() + ".txt");
+                try{
+                    InputStream is = new FileInputStream(file);
+                    OutputStream os = response.getOutputStream();
+                    response.setContentType("application/x-download;charset=GB2312");
+                    response.addHeader("Content-Disposition", "attachment;filename=demo.txt");
+                    IOUtils.copy(is, os);
+                }catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

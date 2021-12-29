@@ -4,9 +4,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-// import java.io.Writer;
-// import java.util.ArrayList;
-// import java.util.List;
 
 import com.evan.bs.model.ModelExportMark;
 
@@ -19,7 +16,7 @@ import org.dom4j.io.XMLWriter;
 public class AnnotationUtils {
     public static boolean writeXML(String notation, ModelExportMark exportMark){
         boolean flag = true;
-        String path = "D:/Coding/bs-image-mark-be/annotations/pascal voc/" + exportMark.getPath(); 
+        String path = "D:/Coding/bs-image-mark-be/annotations/pascal voc/" + exportMark.getPath();
         XMLWriter writer = null;
         try{
             Document document = DocumentHelper.createDocument();
@@ -66,7 +63,7 @@ public class AnnotationUtils {
             }
 
             FileOutputStream fos = new FileOutputStream("D:/Coding/bs-image-mark-be/annotations/pascal voc/" + exportMark.getGraph() + ".xml");
-            writer = new XMLWriter(fos, OutputFormat.createPrettyPrint());
+           writer = new XMLWriter(fos, OutputFormat.createPrettyPrint());
             writer.write(document);
             System.out.println("导出完毕");
         }catch(Exception e){

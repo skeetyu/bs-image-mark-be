@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<annotation>
+  <folder>pascal voc</folder>
+  <filename>n8l4gf.jpg</filename>
+  <path>D:/Coding/bs-image-mark-be/annotations/pascal voc/n8l4gf.jpg</path>
+  <source>
+    <database>Unknown</database>
+  </source>
+  <size>
+    <width>1440</width>
+    <height>1080</height>
+    <depth>3</depth>
+  </size>
+  <segmented>0</segmented>
+  <object>
+    <name>牌匾</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>426</xmin>
+      <ymin>231</ymin>
+      <xmax>520</xmax>
+      <ymax>298</ymax>
+    </bndbox>
+  </object>
+</annotation>
