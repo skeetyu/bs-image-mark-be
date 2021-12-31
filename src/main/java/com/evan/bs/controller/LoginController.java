@@ -1,13 +1,5 @@
 package com.evan.bs.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.evan.bs.entity.User;
 import com.evan.bs.model.ModelEditPassword;
 import com.evan.bs.result.Result;

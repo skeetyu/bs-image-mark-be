@@ -20,7 +20,6 @@ import com.evan.bs.service.MarkService;
 import com.evan.bs.service.TaskService;
 import com.evan.bs.util.AnnotationUtils;
 
-import org.apache.shiro.io.ResourceUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 // import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,7 +109,6 @@ public class MarkController {
                     response.setContentType("application/x-download");
                     response.addHeader("Content-Disposition", "attachment;filename=demo.xml");
                     IOUtils.copy(is, os);
-                    System.out.println("??");
                 }catch(IOException e){
                     e.printStackTrace();
                 }
